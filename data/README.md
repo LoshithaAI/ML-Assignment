@@ -33,6 +33,8 @@ The dataset contains demographic, socioeconomic, academic-path and academic-perf
 
 ## Purpose
 Used for the Machine Learning Programming Assignment to develop and evaluate a Random Forest classifier, which is compared with the Logistic Regression model in the same project.
+## Purpose
+Used for the Machine Learning Programming Assignment to develop and evaluate classification models: Logistic Regression and Random Forest.
 
 ## Licence
 CC BY 4.0 (attribution required).
