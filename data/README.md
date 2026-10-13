@@ -25,6 +25,14 @@ The dataset contains demographic, socioeconomic, academic-path and academic-perf
 - **Feature types:** 9 integer-coded categorical columns (e.g. `Course`, `Application mode`), 8 binary flags, 18 continuous columns, and `Application order`
 - **Class balance:** imbalanced ("Enrolled" is the smallest class)
 
+## How it is used in the Random Forest notebook
+- Loaded with `sep=";"`, and whitespace is removed from the column names.
+- The 9 integer-coded categorical columns are one-hot encoded (`drop_first=True`), giving 238 input columns.
+- Stratified 80/20 train/test split with `random_state=42` (3,539 training rows, 885 test rows).
+- No scaling is applied, since tree-based models do not need it.
+
+## Purpose
+Used for the Machine Learning Programming Assignment to develop and evaluate a Random Forest classifier, which is compared with the Logistic Regression model in the same project.
 ## Purpose
 Used for the Machine Learning Programming Assignment to develop and evaluate classification models: Logistic Regression and Random Forest.
 
