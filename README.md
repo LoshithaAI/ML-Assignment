@@ -41,12 +41,13 @@ Student dropout is a major problem in higher education. This project builds clas
 ├── data/
 │   └── data.csv                     # dataset (also linked in submission.txt)
 ├── notebooks/
-│   ├── 01_eda_preprocessing.ipynb   # shared: EDA, cleaning, encoding, split
-│   ├── 02_logistic_regression.ipynb # Member 1
-│   ├── 03_random_forest.ipynb       # Member 2
-│   └── 04_comparison.ipynb          # side-by-side evaluation
+│   ├── logistic_regression.ipynb   # Thuiyadura L.R
+│   ├── random_forest.ipynb # Nissanka H.M.D.P
 ├── report/
 │   └── report.pdf
+├── results/
+│   └── logistic_regression_results.json
+│   └── random_forest_results.json
 ├── requirements.txt
 └── README.md
 ```
@@ -68,39 +69,63 @@ Student dropout is a major problem in higher education. This project builds clas
 
 ## Results
 
-| Model | Accuracy | Macro-F1 |
+| Metric | Logistic Regression | Random Forest |
 |---|---|---|
-| Logistic Regression | `TBD` | `TBD` |
-| Random Forest | `TBD` | `TBD` |
+| Accuracy | 0.734 | 0.759 |
+| Macro-F1 | 0.696 | 0.703 |
+| Macro-AUC (one-vs-rest) | 0.884 | 0.887 |
+| Recall of "Enrolled" | 0.635 | 0.509 |
 
 > Fill in from your own notebook runs.
 
-## How to Run
+## How to run
+1. `pip install -r requirements.txt`
+2. Run `random_forest.ipynb` and `logistic_regression.ipynb` top to bottom. Each saves its JSON file in `results/`.
+3. The comparison cells in Section 7.4 of `logistic_regression.ipynb` read both JSON files, so run that notebook last.
 
-```bash
-git clone <repo-url>
-cd <repo-name>
-pip install -r requirements.txt
-jupyter notebook
-```
-
-Run the notebooks in numeric order. Python 3.9+ is recommended.
+Both notebooks use `random_state=42` and the same split, so the comparison is fair. 
 
 **Main libraries:** `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`
 
-## Individual Contributions
+| | **Member 1** | **Member 2** |
+|---|---|---|
+| **Name** | `Thuiyadura L.R` | `Nissanka H.M.D.P` |
+| **Student ID** | `MS26923956` | `MS26930190` |
+| **Algorithm** | `Logistic Regression` | `Random Forest` |
+| **Notebook** | `logistic_regression.ipynb` | `random_forest.ipynb` |
+| **GitHub branch** | `thuiyadura-lr-ms26923956` | `nissanka-hmdp-ms26930190` |
 
-- **`<Name 1>`:** `<e.g. preprocessing, Logistic Regression implementation and tuning, relevant report sections>`
-- **`<Name 2>`:** `<e.g. EDA, Random Forest implementation and tuning, relevant report sections>`
+### Shared work (both members)
+| Task | Done by |
+|---|---|
+| Dataset selection and checking it against the assignment requirements | Both |
+| Agreeing the shared settings: `random_state=42`, stratified 80/20 train/test split, same one-hot encoding, macro-F1 for tuning | Both |
+| Repository structure and branches (`main`, `final-development`, one branch per member) | Both |
+| Comparison of the two algorithms (Table A, Table B and the discussion in Section 7.4) | Both |
+| Final report (PDF), `members.txt` and `submission.txt` | Both |
+
+### Individual work
+| Task | Member 1: Logistic Regression | Member 2: Random Forest |
+|---|---|---|
+| Data cleansing, validity checks and outlier analysis | Missing values, duplicates, range and consistency checks, IQR outlier analysis, decision to keep outliers (limited by L2 regularisation) | Missing values, duplicates, IQR outlier analysis, decision to keep outliers (trees split on thresholds, so they are robust to outliers) |
+| Exploratory analysis | Class distribution, boxplots by outcome, correlation matrix, VIF (multicollinearity) | Class distribution, boxplots by outcome, correlation matrix |
+| Model-specific preprocessing | Standardisation of continuous features inside a `Pipeline` (no data leakage), PCA analysis | No scaling needed for trees; feature selection by importance instead of PCA |
+| Algorithm background and justification | Logistic Regression (softmax, regularised loss, `C`) | Random Forest (decision tree and Gini impurity, bagging, random feature subsets, out-of-bag estimate) |
+| Hyperparameter tuning | `GridSearchCV` over `C` and `class_weight`, scored by macro-F1 | `RandomizedSearchCV` (20 settings, 5-fold CV) over `n_estimators`, `max_depth`, `min_samples_leaf`, `max_features` and `class_weight`, scored by macro-F1 |
+| Evaluation | Accuracy, per-class precision, recall and F1, macro-F1, confusion matrix, ROC-AUC, precision-recall curves, cross-validation | Accuracy, per-class precision, recall and F1, macro-F1, confusion matrix, ROC-AUC, cross-validation, out-of-bag accuracy |
+| Model interpretation | Coefficients and odds ratios (risk and protective factors) | Impurity-based and permutation feature importance |
+| Improvement experiments | Class weights, L1, PCA, early prediction, approval-rate features (all by CV), learning curve, Enrolled decision-rule tuning | Class weights, default hyperparameters, raw codes vs one-hot, top-30 features, early prediction, 1st-semester only, number of trees, learning curve |
+| Critical analysis, limitations, future work | Written for Logistic Regression | Written for Random Forest |
+| Statistical comparison of the two models | McNemar test, paired bootstrap and repeated cross-validation (Section 7.4), using the Random Forest settings from the results file | Tuned Random Forest and its results file (`results/random_forest_results.json`), plus the comparison table in its own notebook (Section 6.2) |
+| Results file for the comparison | `results/logistic_regression_results.json` | `results/random_forest_results.json` |
 
 ## Submission Links
 
-- **Dataset:** https://archive.ics.uci.edu/dataset/697
+- **Dataset:** [https://archive.ics.uci.edu/dataset/697](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
 - **Presentation video (YouTube):** `<link>`
 - **Report:** `report/report.pdf`
 
 ## Limitations and Future Work
 
-- The 2nd-semester features strongly predict the outcome, so an early-prediction version using only enrollment and 1st-semester data would be more useful in practice.
 - The "Enrolled" class is the hardest to predict because it is the smallest. Resampling techniques such as SMOTE could be explored.
 - Other classical models (SVM, Gradient Boosting) could be compared.

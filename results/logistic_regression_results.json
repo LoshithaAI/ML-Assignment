@@ -1,0 +1,44 @@
+{
+  "model": "Logistic Regression",
+  "best_params": {
+    "C": 0.1,
+    "class_weight": "balanced"
+  },
+  "test_accuracy": 0.7345,
+  "test_macro_f1": 0.6961,
+  "test_macro_auc_ovr": 0.8844,
+  "cv_macro_f1_mean": 0.7147,
+  "per_class": {
+    "Dropout": {
+      "precision": 0.8235294117647058,
+      "recall": 0.6901408450704225,
+      "f1-score": 0.7509578544061303,
+      "support": 284.0
+    },
+    "Enrolled": {
+      "precision": 0.41735537190082644,
+      "recall": 0.6352201257861635,
+      "f1-score": 0.5037406483790524,
+      "support": 159.0
+    },
+    "Graduate": {
+      "precision": 0.8716049382716049,
+      "recall": 0.7986425339366516,
+      "f1-score": 0.833530106257379,
+      "support": 442.0
+    },
+    "accuracy": 0.7344632768361582,
+    "macro avg": {
+      "precision": 0.7041632406457125,
+      "recall": 0.7080011682644125,
+      "f1-score": 0.6960762030141873,
+      "support": 885.0
+    },
+    "weighted avg": {
+      "precision": 0.7745663726434545,
+      "recall": 0.7344632768361582,
+      "f1-score": 0.7477820346998553,
+      "support": 885.0
+    }
+  }
+}
