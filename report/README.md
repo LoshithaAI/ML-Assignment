@@ -4,13 +4,11 @@ This folder contains the final report for the Machine Learning Programming Assig
 
 | | |
 |---|---|
-| **File** | [`ML-Assignment-Report.pdf`](ML-Assignment-Report.pdf) |
 | **Authors** | Thuiyadura L.R (MS26923956) and Nissanka H.M.D.P (MS26930190) |
 | **Task** | Supervised multi-class classification: Dropout, Enrolled or Graduate |
 | **Algorithms** | Logistic Regression (Member 1) and Random Forest (Member 2) |
 | **Dataset** | [Predict Students' Dropout and Academic Success](https://archive.ics.uci.edu/dataset/697) (UCI Machine Learning Repository) |
 
-> If the PDF has a different file name, update the link in the table above.
 
 ## Contents of the report
 
