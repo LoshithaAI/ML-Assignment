@@ -32,7 +32,6 @@ Student dropout is a major problem in higher education. This project builds clas
 - **Missing values / duplicates:** none
 - **Format note:** the CSV is semicolon-separated, so it is loaded with `pd.read_csv('data.csv', sep=';')`
 
-> Citation: `<copy the official citation from the UCI dataset page>`
 
 ## Repository Structure
 
@@ -44,15 +43,13 @@ Student dropout is a major problem in higher education. This project builds clas
 │   ├── logistic_regression.ipynb   # Thuiyadura L.R
 │   ├── random_forest.ipynb # Nissanka H.M.D.P
 ├── report/
-│   └── report.pdf
+│   └── MS26923956_MS26930190 .pdf
 ├── results/
 │   └── logistic_regression_results.json
 │   └── random_forest_results.json
 ├── requirements.txt
 └── README.md
 ```
-
-> Update the file names above to match your actual notebooks.
 
 ## Methodology
 
@@ -76,7 +73,6 @@ Student dropout is a major problem in higher education. This project builds clas
 | Macro-AUC (one-vs-rest) | 0.884 | 0.887 |
 | Recall of "Enrolled" | 0.635 | 0.509 |
 
-> Fill in from your own notebook runs.
 
 ## How to run
 1. `pip install -r requirements.txt`
@@ -122,8 +118,8 @@ Both notebooks use `random_state=42` and the same split, so the comparison is fa
 ## Submission Links
 
 - **Dataset:** [https://archive.ics.uci.edu/dataset/697](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
-- **Presentation video (YouTube):** `<link>`
-- **Report:** `report/report.pdf`
+- **Presentation video (YouTube):** `[<link>](https://youtu.be/X3Lj_QzbAp0?si=wFHo8UzK0HWaM499)`
+- **Report:** `report/MS26923956_MS26930190.pdf`
 
 ## Limitations and Future Work
 
