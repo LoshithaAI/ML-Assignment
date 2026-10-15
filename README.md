@@ -38,7 +38,7 @@ Student dropout is a major problem in higher education. This project builds clas
 ```
 .
 ├── data/
-│   └── data.csv                     # dataset (also linked in submission.txt)
+│   └── data.csv                    
 ├── notebooks/
 │   ├── logistic_regression.ipynb   # Thuiyadura L.R
 │   ├── random_forest.ipynb # Nissanka H.M.D.P
@@ -118,7 +118,7 @@ Both notebooks use `random_state=42` and the same split, so the comparison is fa
 ## Submission Links
 
 - **Dataset:** [https://archive.ics.uci.edu/dataset/697](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
-- **Presentation video (YouTube):** `[<link>](https://youtu.be/X3Lj_QzbAp0?si=wFHo8UzK0HWaM499)`
+- **Presentation video (YouTube):** https://youtu.be/X3Lj_QzbAp0?si=wFHo8UzK0HWaM499 
 - **Report:** `report/MS26923956_MS26930190.pdf`
 
 ## Limitations and Future Work
